@@ -9,7 +9,7 @@ export const client = createClient({
 export const getAllBooks = async () => {
   const allBooks = await client.getList<BookType>({
     customRequestInit: {
-      cache: 'force-cache', // キャッシュを利用する
+      next: { revalidate: 60 },
     },
     endpoint: 'bookcommerce',
   })
